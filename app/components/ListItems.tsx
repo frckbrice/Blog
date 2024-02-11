@@ -11,11 +11,8 @@ const ListItems = ({ post }: Props) => {
 
   const formatedDate = getFormattedDate(date);
   return (
-    <li className="mt-4 text-2xl text-white/80">
-      <Link
-        href={`/post/${id}`}
-        className="underline hover:text-white/70 text-white/60 "
-      >
+    <li className="mt-4 text-2xl">
+      <Link href={`/post/${id}`} className="underline">
         {title}{" "}
       </Link>{" "}
       <br /> <p className="text-sm mt-1">{formatedDate} </p>

@@ -4,28 +4,23 @@ type Props = {
   src: string;
   alt: string;
   priority?: string;
-}
+};
 
-export default function CustomImage({src, alt, priority}: Props) {
-
+export default function CustomImage({ src, alt, priority }: Props) {
   const prty = priority ? true : false;
 
   return (
     <div className="w-full h-full">
-      <Image 
+      <Image
         className="rounded-lg mx-auto"
-        src= {src}
+        src={src}
         alt={alt}
         width={650}
-        height={650} /** nextjs keeps aspect ratio of image like it is. cannot square image to rectangle */
-        priority= {prty}
-      >
-
-      </Image>
-
+        height={
+          650
+        } /** nextjs keeps aspect ratio of image like it is. cannot square image to rectangle */
+        priority={prty || true}
+      />
     </div>
-  )
-
-
-
+  );
 }

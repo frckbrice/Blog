@@ -1,6 +1,7 @@
 import { getPostsMeta } from "@/lib/post";
 import ListItems from "@/app/components/ListItems";
 import Link from "next/link";
+import NotFound from "@/app/post/[postId]/not-found";
 
 export const revalidate = 86400;
 
@@ -22,6 +23,9 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params: { tag } }: Props) {
+  
+  if(!tag)
+    NotFound()
   return {
     title: `Posts about ${tag}`,
   };
@@ -35,11 +39,10 @@ export default async function TagPostList({ params: { tag } }: Props) {
 
   const tagPosts = posts.filter((post) => post.tags?.includes(tag));
 
-
   if (!tagPosts.length) {
     return (
       <div className="text-center">
-        <p className="mt-10">Sorry, no posts for that keyword.</p>
+        <p className="mt-10">Sorry, no posts for #{tag} keyword.</p>
         <Link href="/">Back to Home</Link>
       </div>
     );
@@ -47,7 +50,7 @@ export default async function TagPostList({ params: { tag } }: Props) {
 
   return (
     <>
-      <h2 className="text-3xl mt-16 mb-0 text-white/80">Results for: #{tag}</h2>
+      <h2 className="text-3xl mt-16 mb-0 ">Results for: #{tag}</h2>
       <section className="mt-6 mx-auto max-w-2xl">
         <ul className="w-full list-none p-0">
           {tagPosts.map((post) => (

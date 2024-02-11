@@ -13,7 +13,7 @@ type FileTree = {
   ];
 };
 
-export const getPostByName = async (
+export const getPostsByName = async (
   filename: string
 ): Promise<BlogPost | undefined> => {
   const resp = await fetch(
@@ -33,7 +33,7 @@ export const getPostByName = async (
 
   if (rawMDX === "404: Not Found") return undefined;
 
-  //? we need to process this MDX file by using "frontmatter method from react-mdx-remote" package which help parse the mdx files
+  //? we need to process this MDX file by using "frontmatter" method from react-mdx-remote" package which help parse the mdx files
 
   // type MetaPart = Pick<Meta, "title" | "date" | "tags">;
 
@@ -75,7 +75,7 @@ export const getPostByName = async (
     },
     content,
   };
-  console.log(blogsPostObj.meta.tags)
+  // console.log(blogsPostObj.meta.tags)
 
   return blogsPostObj;
 };
@@ -104,7 +104,7 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
   const posts: Meta[] = [];
 
   for (const file of filesArray) {
-    const post = await getPostByName(file);
+    const post = await getPostsByName(file);
     if (post) {
       const { meta } = post;
       posts.push(meta);

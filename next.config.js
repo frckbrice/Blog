@@ -13,6 +13,7 @@ const nextConfig = {
         port: "",
         pathname: "/gitdagray/test-blogposts/main/images/**",
       },
+      {hostname: "https://www.google.com"}
     ],
   },
 };

@@ -1,6 +1,7 @@
-import React from 'react';
-import Link from 'next/link';
-import {FaYoutube, FaTwitter, FaGithub, FaLaptop} from 'react-icons/fa'
+import React from "react";
+import Link from "next/link";
+import { FaYoutube, FaTwitter, FaGithub, FaLaptop } from "react-icons/fa";
+import ThemeSwitch from "./ThemeSwitch";
 
 const Navbar = () => {
   return (
@@ -15,7 +16,6 @@ const Navbar = () => {
           </Link>
         </h1>
         <div className="flex flex-row justify-center sm:justify-evenly align-middle gap-4 text-white text-4xl lg:text-5xl">
-        
           <Link
             className="text-white/90 hover:text-white"
             href="https://courses.avombrice.codes/"
@@ -30,14 +30,15 @@ const Navbar = () => {
           </Link>
           <Link
             className="text-white/90 hover:text-white"
-            href="https://twitter.com/avombrice"
+            href="https://twitter.com/evaristeavom"
           >
             <FaTwitter />
           </Link>
+          <ThemeSwitch />
         </div>
       </div>
     </nav>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
